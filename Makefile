@@ -23,4 +23,4 @@ build-linux:
 	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 $(GOBUILD) -o ./bin/$(BINARY_NAME) -v
 
 build-docker-linux:
-	docker build . -t mikejoh/artifactory-exporter:latest
+	docker build . -t artifactory-exporter:latest
