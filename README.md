@@ -13,7 +13,7 @@ An alternative Artifactory Exporter written in Go.
 ```
 Flags:
   -h, --help                     Show context-sensitive help (also try --help-long and --help-man).
-      --web.listen-address=":9607"  
+      --web.listen-address=":9627"  
                                  Address:Port to listen on for web interface and telemetry.
       --web.telemetry-path="/metrics"  
                                  Path under which to expose metrics.
@@ -25,5 +25,5 @@ Flags:
 
 To run the Docker image:
 ```
-docker run -d -p 9607:9607 artifactory-exporter:latest <FLAGS>
+docker run -d -p 9627:9627 artifactory-exporter:latest <FLAGS>
 ```
