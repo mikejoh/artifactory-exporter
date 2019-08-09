@@ -100,7 +100,7 @@ func (c *StorageInfo) Collect(ch chan<- prometheus.Metric) {
 	storageInfoResponse, err := c.fetchAndDecodeStorageInfo()
 	if err != nil {
 		c.up.Set(0)
-		log.Errorf("failed to fetch Storage API data", err)
+		log.Errorf("failed to fetch Storage API data: %s", err)
 		return
 	}
 	c.up.Set(1)
