@@ -31,11 +31,11 @@ type StorageInfo struct {
 	metrics           []*storageInfoMetric
 }
 
-func NewStorageInfo(url *url.URL, creds *BasicCredentials) *StorageInfo {
+func NewStorageInfo(httpClient *http.Client, url *url.URL, creds *BasicCredentials) *StorageInfo {
 
 	return &StorageInfo{
 		credentials: creds,
-		client:  &http.Client{},
+		client:  httpClient,
 		baseUrl: url,
 		up: prometheus.NewGauge(prometheus.GaugeOpts{
 			Name: prometheus.BuildFQName(namespace, subsystem, "up"),

@@ -23,17 +23,19 @@ func main() {
 	kingpin.HelpFlag.Short('h')
 	kingpin.Parse()
 
-	url, err := url.Parse(*apiUrl)
+	u, err := url.Parse(*apiUrl)
 	if err != nil {
 		log.Fatalf("failed parsing url", err)
 	}
 
-	creds := &collector.BasicCredentials{
+	bc := &collector.BasicCredentials{
 		Username: *user,
 		Password: *pass,
 	}
 
-	prometheus.MustRegister(collector.NewStorageInfo(url, creds))
+	httpClient := &http.Client{}
+
+	prometheus.MustRegister(collector.NewStorageInfo(httpClient, u, bc))
 
 	mux := http.DefaultServeMux
 	mux.Handle(*metrics, promhttp.Handler())
