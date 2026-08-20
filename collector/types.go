@@ -9,9 +9,9 @@ type storageInfoResponse struct {
 	StorageSummary struct {
 		BinariesSummary struct {
 			BinariesCount  float64 `json:"binariesCount,string"`
-			BinariesSize   string `json:"binariesSize"`
-			ArtifactsSize  string `json:"artifactsSize"`
-			Optimization   string `json:"optimization"`
+			BinariesSize   string  `json:"binariesSize"`
+			ArtifactsSize  string  `json:"artifactsSize"`
+			Optimization   string  `json:"optimization"`
 			ItemsCount     float64 `json:"itemsCount,string"`
 			ArtifactsCount float64 `json:"artifactsCount,string"`
 		} `json:"binariesSummary"`
@@ -52,9 +52,9 @@ type storageInfoResponse struct {
 	} `json:"repositoriesSummaryList"`
 	BinariesSummary struct {
 		BinariesCount  float64 `json:"binariesCount,string"`
-		BinariesSize   string `json:"binariesSize"`
-		ArtifactsSize  string `json:"artifactsSize"`
-		Optimization   string `json:"optimization"`
+		BinariesSize   string  `json:"binariesSize"`
+		ArtifactsSize  string  `json:"artifactsSize"`
+		Optimization   string  `json:"optimization"`
 		ItemsCount     float64 `json:",string"`
 		ArtifactsCount float64 `json:"artifactsCount,string"`
 	} `json:"binariesSummary"`

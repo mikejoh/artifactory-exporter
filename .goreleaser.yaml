@@ -1,0 +1,49 @@
+version: 2
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: artifactory-exporter
+    main: .
+    binary: artifactory-exporter
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w
+
+archives:
+  - id: artifactory-exporter
+    formats: [tar.gz]
+    name_template: >-
+      {{ .ProjectName }}_{{ .Os }}_{{ .Arch }}
+
+dockers:
+  - id: artifactory-exporter
+    ids:
+      - artifactory-exporter
+    dockerfile: Dockerfile.goreleaser
+    image_templates:
+      - "docker.io/mikejoh/artifactory-exporter:{{ .Tag }}"
+      - "docker.io/mikejoh/artifactory-exporter:latest"
+    goos: linux
+    goarch: amd64
+
+checksum:
+  name_template: "checksums.txt"
+
+snapshot:
+  version_template: "{{ .Tag }}-next"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"

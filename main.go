@@ -13,11 +13,11 @@ import (
 
 func main() {
 	var (
-		bind 	= kingpin.Flag("web.listen-address", "Address:Port to listen on for web interface and telemetry.").Default(":9627").String()
+		bind    = kingpin.Flag("web.listen-address", "Address:Port to listen on for web interface and telemetry.").Default(":9627").String()
 		metrics = kingpin.Flag("web.telemetry-path", "Path under which to expose metrics.").Default("/metrics").String()
-		apiUrl	= kingpin.Flag("web.artifactory-api-url", "Artifactory REST API URL.").Default("http://localhost:8081/artifactory/api/storageinfo").String()
-		user	= kingpin.Flag("web.username", "Artifactory API user.").Default("admin").Short('u').String()
-		pass	= kingpin.Flag("web.password", "Artifactory API user password.").Default("password").Short('p').String()
+		apiUrl  = kingpin.Flag("web.artifactory-api-url", "Artifactory REST API URL.").Default("http://localhost:8081/artifactory/api/storageinfo").String()
+		user    = kingpin.Flag("web.username", "Artifactory API user.").Default("admin").Short('u').String()
+		pass    = kingpin.Flag("web.password", "Artifactory API user password.").Default("password").Short('p').String()
 	)
 
 	kingpin.HelpFlag.Short('h')
@@ -25,7 +25,7 @@ func main() {
 
 	u, err := url.Parse(*apiUrl)
 	if err != nil {
-		log.Fatalf("failed parsing url", err)
+		log.Fatalf("failed parsing url: %s", err)
 	}
 
 	bc := &collector.BasicCredentials{
@@ -48,12 +48,12 @@ func main() {
 			</body>
 			</html>`))
 		if err != nil {
-			log.Errorf("failed handling writer", err)
+			log.Errorf("failed handling writer: %s", err)
 		}
 	})
 
 	server := &http.Server{
-		Addr: *bind,
+		Addr:    *bind,
 		Handler: mux,
 	}
 

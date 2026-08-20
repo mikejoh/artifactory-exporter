@@ -1,5 +1,10 @@
 # Artifactory Exporter for Prometheus
 
+[![CI](https://github.com/mikejoh/artifactory-exporter/actions/workflows/go.yml/badge.svg)](https://github.com/mikejoh/artifactory-exporter/actions/workflows/go.yml)
+[![Release](https://img.shields.io/github/v/release/mikejoh/artifactory-exporter)](https://github.com/mikejoh/artifactory-exporter/releases/latest)
+[![Go Report Card](https://goreportcard.com/badge/github.com/mikejoh/artifactory-exporter)](https://goreportcard.com/report/github.com/mikejoh/artifactory-exporter)
+[![License](https://img.shields.io/github/license/mikejoh/artifactory-exporter)](https://github.com/mikejoh/artifactory-exporter/blob/master/LICENSE)
+
 An alternative Artifactory Exporter written in Go.
 
 ## Notes
