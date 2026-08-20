@@ -1,0 +1,3 @@
+FROM scratch
+COPY artifactory-exporter /artifactory-exporter
+ENTRYPOINT ["/artifactory-exporter"]

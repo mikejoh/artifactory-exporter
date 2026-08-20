@@ -22,7 +22,7 @@ type storageInfoMetric struct {
 }
 
 type StorageInfo struct {
-	credentials		  *BasicCredentials
+	credentials       *BasicCredentials
 	client            *http.Client
 	baseUrl           *url.URL
 	up                prometheus.Gauge
@@ -35,8 +35,8 @@ func NewStorageInfo(httpClient *http.Client, url *url.URL, creds *BasicCredentia
 
 	return &StorageInfo{
 		credentials: creds,
-		client:  httpClient,
-		baseUrl: url,
+		client:      httpClient,
+		baseUrl:     url,
 		up: prometheus.NewGauge(prometheus.GaugeOpts{
 			Name: prometheus.BuildFQName(namespace, subsystem, "up"),
 			Help: "Artifactory API endpoint availability.",
@@ -131,7 +131,7 @@ func (c *StorageInfo) fetchAndDecodeStorageInfo() (storageInfoResponse, error) {
 	defer func() {
 		err = res.Body.Close()
 		if err != nil {
-			log.Errorf("failed to close http.Client", err)
+			log.Errorf("failed to close http.Client: %s", err)
 		}
 	}()
 
